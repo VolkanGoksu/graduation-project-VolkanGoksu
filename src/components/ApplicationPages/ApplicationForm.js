@@ -6,10 +6,8 @@ import database from '../../firebase'
 import firebase from 'firebase'
 import { Link, useHistory } from 'react-router-dom'
 
-
 export default function ApplicationForm() {
-
-  const history = useHistory();
+  const history = useHistory()
 
   const [input, setinput] = useState('')
   const [values, setvalues] = useState({})
@@ -28,18 +26,22 @@ export default function ApplicationForm() {
 
   // form validation rules
   const validationSchema = Yup.object().shape({
-    firstName: Yup.string().required(),
-    lastName: Yup.string().required('Last name is required'),
-    dob: Yup.string()
-      .required('Date of Birth is required')
-      .matches(
-        /^\d{4}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$/,
-        'Date of Birth must be a valid date in the format YYYY-MM-DD'
-      ),
-    email: Yup.string().required('Email is required').email('Email is invalid'),
-    idNo: Yup.string().min(11).max(11).required('Only 11 Number'),
-    description: Yup.string().required('Description is required'),
-    address: Yup.string().required('Address is required'),
+    firstName: Yup.string().required('Lütfen isimizi giriniz.'),
+    lastName: Yup.string().required('Lütfen soyisminizi giriniz.'),
+    // dob: Yup.string()
+    //   .required('Lütfen Doğum Tarhihinizi seçiniz')
+    //   .matches(
+    //     /^\d{4}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$/,
+    //     'Date of Birth must be a valid date in the format YYYY-MM-DD'
+    //   ),
+      age: Yup.number().positive().integer().required('Lütfen yaşınızı giriniz').typeError('Lütfen Sayı giriniz').min(18, "En az 18 yaşında olmalısın")
+      .max(99, "En fazla 99 yaşında olmalısın"),
+    email: Yup.string()
+      .required('Lütfen e-postanızı giriniz.')
+      .email('Geçersiz e-posta'),
+    idNo: Yup.string().min(11).max(11).required('T.C. Kimlik No 11 hanedir.'),
+    description: Yup.string().required('Lütfen açıklamanızı yazınız.'),
+    address: Yup.string().required('Lütfen adresinizi giriniz.'),
   })
   const formOptions = { resolver: yupResolver(validationSchema) }
 
@@ -49,30 +51,32 @@ export default function ApplicationForm() {
 
   function onSubmit(data) {
     // console.log(data.doc.id)
-    database.collection('tickets').add({
-      ticket: {
-        // id: data.doc.id,
-        firstname: data.firstName,
-        lastName: data.lastName,
-        email: data.email,
-        idNo: data.idNo,
-        dob: data.dob,
-        description: data.description,
-        address: data.address,
-      },
-      timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-    }).then(res=>{
-      if(res.id){
-        history.push("/basvuru-basarili/"+res.id);
-      }
-      console.log(res.id)
-    })
-  
+    database
+      .collection('tickets')
+      .add({
+        ticket: {
+          // id: data.doc.id,
+          firstname: data.firstName,
+          lastName: data.lastName,
+          email: data.email,
+          idNo: data.idNo,
+          age:data.age,
+          // dob: data.dob,
+          description: data.description,
+          address: data.address,
+        },
+        timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+      })
+      .then((res) => {
+        if (res.id) {
+          history.push('/basvuru-basarili/' + res.id)
+        }
+        console.log(res.id)
+      })
   }
   console.log(values)
   // console.log(values.map((val) => val.id))
   return (
-
     <div className="card m-3">
       <h5 className="text-gray-600 font-medium text-center">
         Application Form
@@ -85,7 +89,7 @@ export default function ApplicationForm() {
         >
           <div className="form-row">
             <div className="form-group col-5">
-              <label className="text-gray-600 font-medium">First Name</label>
+              <label className="text-gray-600 font-medium">İsim</label>
               <input
                 className="border-solid border-gray-300 border py-2 px-4 w-full
               rounded text-gray-700"
@@ -101,7 +105,7 @@ export default function ApplicationForm() {
               </div>
             </div>
             <div className="form-group col-5">
-              <label className="text-gray-600 font-medium">Last Name</label>
+              <label className="text-gray-600 font-medium">Soyisim</label>
               <input
                 name="lastName"
                 type="text"
@@ -117,7 +121,7 @@ export default function ApplicationForm() {
           </div>
           <div className="form-row">
             <div className="form-group col">
-              <label className="text-gray-600 font-medium">Email</label>
+              <label className="text-gray-600 font-medium">E-Posta</label>
               <input
                 name="email"
                 type="text"
@@ -133,7 +137,9 @@ export default function ApplicationForm() {
               </div>
             </div>
             <div className="form-group col">
-              <label className="text-gray-600 font-medium">TC</label>
+              <label className="text-gray-600 font-medium">
+                T.C. Kimlik No
+              </label>
               <input
                 name="idNo"
                 type="text"
@@ -141,7 +147,7 @@ export default function ApplicationForm() {
                 {...register('idNo')}
                 className={`border-solid border-gray-300 border py-2 px-4 w-full
               rounded text-gray-700 form-control ${
-                errors.dob ? 'is-invalid' : ''
+                errors.idNo ? 'is-invalid' : ''
               }`}
               />
               <div className="mb-3 text-normal text-red-500 invalid-feedback">
@@ -149,23 +155,26 @@ export default function ApplicationForm() {
               </div>
             </div>
             <div className="form-group col">
-              <label className="text-gray-600 font-medium">Date of Birth</label>
-              <input
-                name="dob"
-                type="date"
-                onChange={(e) => setinput(e.target.value)}
-                {...register('dob')}
-                className={`border-solid border-gray-300 border py-2 px-4 w-full
-                rounded text-gray-700 form-control ${
-                  errors.dob ? 'is-invalid' : ''
-                }`}
-              />
-              <div className="mb-3 text-normal text-red-500 invalid-feedback">
-                {errors.dob?.message}
-              </div>
+           
+         
+            <label className="text-gray-600 font-medium">Yaşınız</label>
+            <input
+              name="age"
+              type="string"
+              className="border-solid border-gray-300 border py-2 px-4 w-full
+              rounded text-gray-700 form-control"
+              onChange={(e) => setinput(e.target.value)}
+              {...register('age')}
+            />
+            <div className="mb-3 text-normal text-red-500 invalid-feedback">
+            {errors.age?.message}
             </div>
+
+       
+          </div>
+
             <label className="text-gray-600 font-medium block mt-4">
-              Description
+              Açıklama
             </label>
             <textarea
               name="description"
@@ -183,7 +192,7 @@ export default function ApplicationForm() {
           </div>
           <div className="form-group">
             <label className="text-gray-600 font-medium block mt-4">
-              Address
+              Adres Bilgisi
             </label>
             <textarea
               name=" address"
@@ -205,10 +214,7 @@ export default function ApplicationForm() {
               type="submit"
               className=" mt-4 bg-green-400 hover:bg-green-600 text-green-100 border py-3 px-6 font-semibold text-md rounded"
             >
-            
-              
-                Send
-              
+              Send
             </button>
 
             <button

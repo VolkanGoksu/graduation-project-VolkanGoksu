@@ -66,7 +66,7 @@ function SuccesApplicationPage() {
             tabindex="0"
             class="focus:outline-none text-gray-600 dark:text-gray-100 text-sm leading-none pt-2 "
           >
-          <label className="focus:outline-none text-xs italic pt-1 leading-3 text-gray-400 ">Doğum Tarihi: {values?.data?.ticket?.dob}</label>
+          <label className="focus:outline-none text-xs italic pt-1 leading-3 text-gray-400 ">Yaşınız: {values?.data?.ticket?.age}</label>
            
           </p>
           <p
