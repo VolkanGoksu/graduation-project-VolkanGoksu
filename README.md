@@ -1,5 +1,27 @@
 ## Bitirme projesi
 
+<a href="https://laughing-dubinsky-b58205.netlify.app">Live Link</a>
+
+<ul style="list-style-type:disc">
+   <li>Kullanıcı Adı: kodluyoruz</li>
+   <li>Şifre: bootcamp109</li>
+</ul>
+
+#  Teknolojiler
+
+<ol>
+  <li><a href="https://reactrouter.com/web/guides/quick-start">React Router</a></li>
+   <li><a href="https://firebase.google.com/">Firebase (Firestore cloud)</a></li>
+   <li><a href="https://reactjs.org/docs/context.html">Context API</a></li>
+   <li><a href="https://react-hook-form.com/">React Hook Form</a></li>
+   <li><a href="https://github.com/jquense/yup">YupJS</a></li>
+   <li><a href="https://tailwindcss.com/docs">Tailwind CSS</a></li>
+  <li><a href="https://testing-library.com/docs/">React Testing Library</a></li>
+  <li><a href="https://react-icons.github.io/react-icons/">React Icons</a></li>  
+</ol>
+
+
+
 ### Başvuru / ticket yönetim sistemi
 
 #### Genel Açıklama
@@ -46,31 +68,6 @@ Kullanıcı adı ve şifre ile girilebilen bir ekrandan da yetkili kullanıcıla
   - Burada yazılan cevap son kullanıci tarafından basvuru/{basvuruNo} kısmından görüntülenebilmelidir.
 
 ##### Gereklilikler
-
-<a href="">Live Link</a>
-
-<ul style="list-style-type:disc">
-   <li>Kullanıcı Adı: kodluyoruz</li>
-   <li>Şifre: bootcamp109</li>
-</ul>
-
-#  Teknolojiler
-
-<ol>
-  <li><a href="https://reactrouter.com/web/guides/quick-start">React Router</a></li>
-   <li><a href="https://firebase.google.com/">Firebase (Firestore cloud)</a></li>
-   <li><a href="https://reactjs.org/docs/context.html">Context API</a></li
-   <li><a href="https://react-hook-form.com/">React Hook Form</a></li>
-   <li><a href="https://github.com/jquense/yup">YupJS</a></li>
-   <li><a href="https://tailwindcss.com/docs">Tailwind CSS</a></li>
-  <li><a href="https://testing-library.com/docs/">React Testing Library</a></li>
-  <li><a href="https://react-icons.github.io/react-icons/">React Icons</a></li>  
-</ol>
-
-# Screens
-![Proje Resmi](public/screenshots/img1.jfif)
-![Proje Resmi](public/screenshots/img2.jfif)
-![Proje Resmi](public/screenshots/img3.jfif)
 
 - React hooks
 - Router (react-router/ reach router / etc)
