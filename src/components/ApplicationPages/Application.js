@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useHistory, useParams } from 'react-router-dom'
-import database from '../../firebase'
+import database from '../../firebase/firebase'
 
 export default function Application() {
   const [values, setvalues] = useState({})

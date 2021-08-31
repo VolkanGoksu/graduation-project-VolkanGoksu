@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
-import database from '../../firebase'
+import database from '../../firebase/firebase'
 import { useHistory } from 'react-router-dom'
 import { GlobalContext } from '../../context/GlobalState'
 import LoginSchema from '../../schema/LoginSchema'

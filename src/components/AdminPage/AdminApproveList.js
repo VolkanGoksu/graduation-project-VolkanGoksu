@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react'
 import { useHistory } from 'react-router-dom'
-import database from '../../firebase'
+import database from '../../firebase/firebase'
 import { GlobalContext } from '../../context/GlobalState'
 import { GoSearch } from 'react-icons/go'
 export default function AdminApproveList() {

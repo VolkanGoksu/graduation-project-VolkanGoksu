@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import database from '../../firebase'
+import database from '../../firebase/firebase'
 
 function SuccesApplicationPage() {
   const [values, setvalues] = useState({})
