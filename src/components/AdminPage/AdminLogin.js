@@ -75,6 +75,7 @@ export default function Login() {
           </div>
 
           <input
+            data-testid='password'
             class="shadow-md border w-full h-10 px-3 py-2 text-orange-500 focus:outline-none focus:border-orange-500 mb-3 rounded"
             type="password"
             name="password"

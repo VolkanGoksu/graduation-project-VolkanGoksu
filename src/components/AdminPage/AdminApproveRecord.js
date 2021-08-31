@@ -40,7 +40,7 @@ export default function AdminApproveRecord() {
       .doc(ticket.id)
       .update({ ticket: { ...oldTicket, approveAnswer: answer } })
 
-    // window.alert(`Beklemekte olan ${id} nolu başvuruyu cevapladınız.`)
+    window.alert(`Beklemekte olan ${id} nolu başvuruyu cevapladınız.`)
   }
 
   return (

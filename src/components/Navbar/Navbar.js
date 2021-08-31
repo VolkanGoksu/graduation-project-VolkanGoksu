@@ -1,8 +1,7 @@
 import React, { useContext } from 'react'
-import { Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import { GlobalContext } from '../../context/GlobalState'
-
 
 function Navbar() {
   const { isAdmin } = useContext(GlobalContext)

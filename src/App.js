@@ -22,6 +22,8 @@ function App() {
         <div>
           <AdminNavBar></AdminNavBar>
           <Navbar />
+       
+           <Route path={'/'} component={ApplicationForm} exact />
           <Route path={'/basvuru-olustur'} component={ApplicationForm} />
           <Route
             exact
