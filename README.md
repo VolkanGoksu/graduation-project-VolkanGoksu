@@ -1,6 +1,5 @@
-## Bitirme projesi
 
-<a href="https://laughing-dubinsky-b58205.netlify.app">Live Link</a>
+## [LiveLink ()=>](https://laughing-dubinsky-b58205.netlify.app/)
 
 <ul style="list-style-type:disc">
    <li>Kullanıcı Adı: kodluyoruz</li>
@@ -20,6 +19,10 @@
   <li><a href="https://react-icons.github.io/react-icons/">React Icons</a></li>  
 </ol>
 
+
+
+
+## Bitirme projesi
 
 
 ### Başvuru / ticket yönetim sistemi
