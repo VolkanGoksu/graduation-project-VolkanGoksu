@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { Link, Route, useHistory } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { GlobalContext } from '../../context/GlobalState'
 
 function AdminNavbar() {
@@ -22,7 +22,7 @@ function AdminNavbar() {
             Nav
           </Link>
           <div className="px-4 cursor-pointer md:hidden">
-            <svg 
+            <svg
               className="w-6 h-6"
               fill="none"
               stroke="currentColor"
@@ -41,7 +41,7 @@ function AdminNavbar() {
             <Link to="/admin/basvuru-listesi" className="px-4">
               Başvuru Listesi
             </Link>
-            <Link 
+            <Link
               onClick={() => {
                 handleLogout()
               }}
