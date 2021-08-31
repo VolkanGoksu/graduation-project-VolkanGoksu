@@ -28,18 +28,21 @@ export default function ApplicationForm() {
   const validationSchema = Yup.object().shape({
     firstName: Yup.string().required('Lütfen isimizi giriniz.'),
     lastName: Yup.string().required('Lütfen soyisminizi giriniz.'),
-    // dob: Yup.string()
-    //   .required('Lütfen Doğum Tarhihinizi seçiniz')
-    //   .matches(
-    //     /^\d{4}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$/,
-    //     'Date of Birth must be a valid date in the format YYYY-MM-DD'
-    //   ),
-      age: Yup.number().positive().integer().required('Lütfen yaşınızı giriniz').typeError('Lütfen Sayı giriniz').min(18, "En az 18 yaşında olmalısın")
-      .max(99, "En fazla 99 yaşında olmalısın"),
+    age: Yup.number()
+      .positive()
+      .integer()
+      .required('Lütfen yaşınızı giriniz')
+      .typeError('Lütfen yaşınızı giriniz')
+      .min(18, 'En az 18 yaşında olmalısın')
+      .max(99, 'En fazla 99 yaşında olmalısın'),
     email: Yup.string()
       .required('Lütfen e-postanızı giriniz.')
       .email('Geçersiz e-posta'),
-    idNo: Yup.string().min(11).max(11).required('T.C. Kimlik No 11 hanedir.'),
+    idNo: Yup.string()
+      .min(11, 'Kimlik Numaranız 11 hane olmalı')
+      .max(11, 'Kimlik Numaranız 11 hane olmalı')
+      .required('Lütfen TC No girinizç'),
+
     description: Yup.string().required('Lütfen açıklamanızı yazınız.'),
     address: Yup.string().required('Lütfen adresinizi giriniz.'),
   })
@@ -50,6 +53,8 @@ export default function ApplicationForm() {
   const { errors } = formState
 
   function onSubmit(data) {
+    console.log(data)
+
     // console.log(data.doc.id)
     database
       .collection('tickets')
@@ -60,7 +65,7 @@ export default function ApplicationForm() {
           lastName: data.lastName,
           email: data.email,
           idNo: data.idNo,
-          age:data.age,
+          age: data.age,
           // dob: data.dob,
           description: data.description,
           address: data.address,
@@ -74,6 +79,7 @@ export default function ApplicationForm() {
         console.log(res.id)
       })
   }
+
   console.log(values)
   // console.log(values.map((val) => val.id))
   return (
@@ -142,7 +148,7 @@ export default function ApplicationForm() {
               </label>
               <input
                 name="idNo"
-                type="text"
+                type="string"
                 onChange={(e) => setinput(e.target.value)}
                 {...register('idNo')}
                 className={`border-solid border-gray-300 border py-2 px-4 w-full
@@ -155,23 +161,19 @@ export default function ApplicationForm() {
               </div>
             </div>
             <div className="form-group col">
-           
-         
-            <label className="text-gray-600 font-medium">Yaşınız</label>
-            <input
-              name="age"
-              type="string"
-              className="border-solid border-gray-300 border py-2 px-4 w-full
+              <label className="text-gray-600 font-medium">Yaşınız</label>
+              <input
+                name="age"
+                type="string"
+                className="border-solid border-gray-300 border py-2 px-4 w-full
               rounded text-gray-700 form-control"
-              onChange={(e) => setinput(e.target.value)}
-              {...register('age')}
-            />
-            <div className="mb-3 text-normal text-red-500 invalid-feedback">
-            {errors.age?.message}
+                onChange={(e) => setinput(e.target.value)}
+                {...register('age')}
+              />
+              <div className="mb-3 text-normal text-red-500 invalid-feedback">
+                {errors.age?.message}
+              </div>
             </div>
-
-       
-          </div>
 
             <label className="text-gray-600 font-medium block mt-4">
               Açıklama
@@ -190,7 +192,7 @@ export default function ApplicationForm() {
               {errors.description?.message}
             </div>
           </div>
-          <div className="form-group">
+          <div className="form-group col">
             <label className="text-gray-600 font-medium block mt-4">
               Adres Bilgisi
             </label>
@@ -208,7 +210,6 @@ export default function ApplicationForm() {
               {errors.address?.message}
             </div>
           </div>
-
           <div className="form-group">
             <button
               type="submit"

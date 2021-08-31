@@ -24,7 +24,7 @@ export default function AdminApproveList() {
         return {
           id: x.id,
           ticket: x.data(),
-          
+        
         }
       })
     )
@@ -59,6 +59,9 @@ export default function AdminApproveList() {
                     {x.id}{' '}
                   </label>{' '}
                 </span>  
+                <span className="block px-5 italic text-1 text-gray-400 font-bold">
+                  Onay Durumu : <label className="text-red-700 focus:outline-none text-l italic pt-1 leading-3 text-gray-400">{x.ticket.ticket.statu}</label>
+                </span>
               </a>
             </li>
           </ul>

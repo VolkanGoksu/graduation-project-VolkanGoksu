@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import database from '../../firebase'
+import { useHistory } from 'react-router-dom'
 
 export default function AdminApproveRecord() {
   var { id } = useParams()
 
   const [ticket, setticket] = useState({})
   const [answer, setAnswer] = useState({})
+  const history = useHistory()
 
   useEffect(async () => {
     var allTickets = await database
@@ -26,6 +28,8 @@ export default function AdminApproveRecord() {
       .collection('tickets')
       .doc(ticket.id)
       .update({ ticket: { ...oldTicket, statu: 'approved' } })
+    // window.alert(`Beklemekte olan ${id} nolu başvuruyu onayladınız.`)
+    history.push('/admin/approved' + id)
   }
 
   async function handleAnswer() {
@@ -35,6 +39,8 @@ export default function AdminApproveRecord() {
       .collection('tickets')
       .doc(ticket.id)
       .update({ ticket: { ...oldTicket, approveAnswer: answer } })
+
+    // window.alert(`Beklemekte olan ${id} nolu başvuruyu cevapladınız.`)
   }
 
   return (
@@ -52,7 +58,7 @@ export default function AdminApproveRecord() {
 
             <input
               className="border-solid border-gray-300 border py-2 px-4 w-full
-              rounded text-gray-700"
+            rounded text-gray-700"
               type="text"
               onChange={(e) => setAnswer(e.target.value)}
             />

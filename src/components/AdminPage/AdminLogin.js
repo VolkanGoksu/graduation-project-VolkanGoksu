@@ -1,14 +1,14 @@
 import React, { useState, useContext } from 'react'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
-import * as Yup from 'yup'
+import * as yup from 'yup'
 import database from '../../firebase'
 import { useHistory } from 'react-router-dom'
 import { GlobalContext } from '../../context/GlobalState'
 
 export default function Login() {
   const [loginInfo, setLoginInfo] = useState({ username: '', password: '' })
-  const [input, setinput] = useState('')
+
   const history = useHistory()
 
   const { authAdmin } = useContext(GlobalContext)
@@ -30,12 +30,18 @@ export default function Login() {
       authAdmin(true)
       history.push('/admin/basvuru-listesi')
     } else {
-      alert('giriş başarısız')
+      // alert('giriş başarısız')
     }
   }
 
-  return (
-    <div class="w-full h-screen flex flex-col-reveresed">
+
+
+  const onSubmit= (data) => {
+    console.log(data);
+  };
+  
+    return (
+      <div class="w-full h-screen flex flex-col-reveresed">
       <img
         src="https://images.unsplash.com/photo-1540569876033-6e5d046a1d77?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"
         alt="background"
@@ -43,6 +49,7 @@ export default function Login() {
       />
       <div class="bg-white flex flex-col justify-center items-center w-5/12 shadow-lg">
         <h1 class="text-3xl font-bold text-blue-500 mb-2">LOGIN</h1>
+        <form onSubmit={onSubmit} />
         <div class="w-1/2 text-center">
           <input
             type="text"
@@ -51,9 +58,11 @@ export default function Login() {
             onChange={(e) =>
               setLoginInfo({ ...loginInfo, username: e.target.value })
             }
-            autocomplete="off"
             class="shadow-md border w-full h-10 px-3 py-2 text-orange-500 focus:outline-none focus:border-orange-500 mb-3 rounded"
           />
+          <div className="mb-3 text-normal text-red-500">
+   
+        </div>
           <input
             type="password"
             name="password"
@@ -73,5 +82,6 @@ export default function Login() {
         </div>
       </div>
     </div>
-  )
-}
+    )
+  }
+
