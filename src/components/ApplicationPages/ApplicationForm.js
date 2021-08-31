@@ -5,9 +5,9 @@ import * as Yup from 'yup'
 import database from '../../firebase'
 import firebase from 'firebase'
 import { Link, useHistory } from 'react-router-dom'
+import validationSchema from '../../schema/AplicationSchema'
 
 export default function ApplicationForm() {
-
   const history = useHistory()
 
   const [input, setinput] = useState('')
@@ -24,34 +24,14 @@ export default function ApplicationForm() {
       // {values.map(item=>(<ul><li>{item.data.ticket}</li></ul>))}
     )
   }, [])
-
-  // form validation rules
-  const validationSchema = Yup.object().shape({
-    firstName: Yup.string().required('Lütfen isimizi giriniz.'),
-    lastName: Yup.string().required('Lütfen soyisminizi giriniz.'),
-    age: Yup.number()
-      .positive()
-      .integer()
-      .required('Lütfen yaşınızı giriniz')
-      .typeError('Lütfen yaşınızı giriniz')
-      .min(18, 'En az 18 yaşında olmalısın')
-      .max(99, 'En fazla 99 yaşında olmalısın'),
-    email: Yup.string()
-      .required('Lütfen e-postanızı giriniz.')
-      .email('Geçersiz e-posta'),
-    idNo: Yup.string()
-      .min(11, 'Kimlik Numaranız 11 hane olmalı')
-      .max(11, 'Kimlik Numaranız 11 hane olmalı')
-      .required('Lütfen TC No girinizç'),
-
-    description: Yup.string().required('Lütfen açıklamanızı yazınız.'),
-    address: Yup.string().required('Lütfen adresinizi giriniz.'),
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(validationSchema),
   })
-  const formOptions = { resolver: yupResolver(validationSchema) }
-
-  // get functions to build form with useForm() hook
-  const { register, handleSubmit, reset, formState } = useForm(formOptions)
-  const { errors } = formState
 
   function onSubmit(data) {
     console.log(data)
@@ -97,7 +77,8 @@ export default function ApplicationForm() {
           <div className="form-row">
             <div className="form-group col-5">
               <label className="text-gray-600 font-medium">İsim</label>
-              <input data-testid = 'name'
+              <input
+                data-testid="name"
                 className="border-solid border-gray-300 border py-2 px-4 w-full
               rounded text-gray-700"
                 type="text"
@@ -144,7 +125,7 @@ export default function ApplicationForm() {
               </div>
             </div>
             <div className="form-group col">
-              <label  className="text-gray-600 font-medium">
+              <label className="text-gray-600 font-medium">
                 T.C. Kimlik No
               </label>
               <input
@@ -163,7 +144,8 @@ export default function ApplicationForm() {
             </div>
             <div className="form-group col">
               <label className="text-gray-600 font-medium">Yaşınız</label>
-              <input data-testid = 'age'
+              <input
+                data-testid="age"
                 name="age"
                 type="string"
                 className="border-solid border-gray-300 border py-2 px-4 w-full
@@ -176,7 +158,10 @@ export default function ApplicationForm() {
               </div>
             </div>
 
-            <label data-testid = 'labeldesc' className="text-gray-600 font-medium block mt-4">
+            <label
+              data-testid="labeldesc"
+              className="text-gray-600 font-medium block mt-4"
+            >
               Açıklama
             </label>
             <textarea
@@ -219,7 +204,8 @@ export default function ApplicationForm() {
               Send
             </button>
 
-            <button  data-testid = 'formbutton'
+            <button
+              data-testid="formbutton"
               type="button"
               onClick={() => reset()}
               className="mt-4 bg-green-400 hover:bg-green-600 text-green-100 border py-3 px-6 font-semibold text-md rounded"

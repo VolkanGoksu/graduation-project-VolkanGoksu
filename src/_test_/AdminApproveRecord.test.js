@@ -5,8 +5,6 @@ import { fireEvent, render, screen } from '@testing-library/react'
 import { BrowserRouter as Router } from 'react-router-dom'
 import AdminApproveRecord from '../components/AdminPage/AdminApproveRecord'
 
-
-
 describe('it should render correctly', () => {
   const history = createMemoryHistory()
   beforeEach(() => {

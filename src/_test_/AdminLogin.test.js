@@ -21,7 +21,7 @@ describe('it should render correctly', () => {
     expect(username).toBeInTheDocument()
   })
 
-  test('render img', () => {
+  test('render iFg', () => {
     const img = screen.getByTestId('img')
     expect(img).toBeInTheDocument()
   })
