@@ -1,49 +1,76 @@
 ## Bitirme projesi
-### Başvuru / ticket yönetim sistemi
 
+### Başvuru / ticket yönetim sistemi
 
 #### Genel Açıklama
 
-Uygulamamız herkese açık bir başvuru formunun son kullanıcı tarafından doldurulması ile başlıyor. 
-Formu dolduran kullanıcıya başvurusunu takip edebilecegi bir kod veriliyor. Kullanıcı başvuru durumu sayfasından bu kod ile başvurusunun çözülüp çözülemedigini kontrol edebiliyor. 
+Uygulamamız herkese açık bir başvuru formunun son kullanıcı tarafından doldurulması ile başlıyor.
+Formu dolduran kullanıcıya başvurusunu takip edebilecegi bir kod veriliyor. Kullanıcı başvuru durumu sayfasından bu kod ile başvurusunun çözülüp çözülemedigini kontrol edebiliyor.
 
 Kullanıcı adı ve şifre ile girilebilen bir ekrandan da yetkili kullanıcılar gelen başvuruları görüntüleyebiliyor cevaplanmamış başvurulara cevap yazıp durumunu çözüldü / iptal edildi / bekliyor vb gibi güncelleyebiliyor. Gerekirse eski kayıtlara ulaşabiliyor.
 
-
 #### Detaylı Açıklama
-
 
 ##### Routes / Paths
 
 - /basvuru-olustur (default)
+
   - Public endpoint.
   - Başvuru formunu herhangi bir kullanıcının doldurmasına imkan verir.
-  - Başvuru formunda [Ad, Soyad, Yaş, TC, Başvuru Nedeni, Adres Bilgisi, Fotograflar/Ekler, Gonder] butonu yer alır. 
+  - Başvuru formunda [Ad, Soyad, Yaş, TC, Başvuru Nedeni, Adres Bilgisi, Fotograflar/Ekler, Gonder] butonu yer alır.
 
 - /basvuru-basarili (Basvuru formu doldurulduktan sonra gelen sayfa)
+
   - Ekranda bir teşekkür mesajı yer alır ve kullanıcıya başvuru detayları ile birlikte başvuru kodu verilir.
 
 - /basvuru-sorgula
+
   - Ekranda başvuru kodu girilebilen bir input ve sorgula butonu vardır.
 
 - /basvuru/{basvuruNo}
+
   - Ekranda başvuru varsa bilgileri, son durumu ve verilen cevap(lar) yer alır.
   - Başvuru numarası hatalıysa 404(bulunamadı) mesajı çıkar.
 
 - /admin
+
   - Ekranda kullanıcı giriş formu vardır. (Rahat test edebilmemiz için u:kodluyoruz, p:bootcamp109 bilgileri ile giriş yapabilmeliyim.)
 
 - /admin/basvuru-listesi
+
   - Başarıli giriş sonrası bekleyen (çözülmemiş/cevaplanmamış) başvuruların listesi yer alır ve basit bilgiler sunar. (Başvuru yapan, tarih)
   - Başvuru listesinde her elemenda başvuruyu görüntüle butonu vardır.
 
 - /admin/basvuru/{basvuruNo}
   - Başvurunun durumu güncellenebilir ve başvuruya cevap yazılabilir.
   - Burada yazılan cevap son kullanıci tarafından basvuru/{basvuruNo} kısmından görüntülenebilmelidir.
-  
-
 
 ##### Gereklilikler
+
+<a href="">Live Link</a>
+
+<ul style="list-style-type:disc">
+   <li>Kullanıcı Adı: kodluyoruz</li>
+   <li>Şifre: bootcamp109</li>
+</ul>
+
+#  Teknolojiler
+
+<ol>
+  <li><a href="https://reactrouter.com/web/guides/quick-start">React Router</a></li>
+   <li><a href="https://firebase.google.com/">Firebase (Firestore cloud)</a></li>
+   <li><a href="https://reactjs.org/docs/context.html">Context API</a></li
+   <li><a href="https://react-hook-form.com/">React Hook Form</a></li>
+   <li><a href="https://github.com/jquense/yup">YupJS</a></li>
+   <li><a href="https://tailwindcss.com/docs">Tailwind CSS</a></li>
+  <li><a href="https://testing-library.com/docs/">React Testing Library</a></li>
+  <li><a href="https://react-icons.github.io/react-icons/">React Icons</a></li>  
+</ol>
+
+# Screens
+![Proje Resmi](public/screenshots/img1.jfif)
+![Proje Resmi](public/screenshots/img2.jfif)
+![Proje Resmi](public/screenshots/img3.jfif)
 
 - React hooks
 - Router (react-router/ reach router / etc)
@@ -55,8 +82,8 @@ Kullanıcı adı ve şifre ile girilebilen bir ekrandan da yetkili kullanıcıla
 - Open source
 - Eslint
 
-
 ##### Dikkat edelim
+
 - Tüm formlarda gerekli validasyonlar olsun.
 - Back-end yazmak zorunda degilsiniz, back-end olarak firebase ya da mock bir api kullanabilirsiniz.
 - Elinizden gelen en iyi şekilde seperation of concerns'e dikkat ederek yazın.
@@ -64,7 +91,8 @@ Kullanıcı adı ve şifre ile girilebilen bir ekrandan da yetkili kullanıcıla
 - Mümkünse admin paneline bir menü ekleyelim (başvuru listesi, çıkıs gibi işlemleri kapsasın)
 
 ##### Bonus (Zorunlu degil, deneysel ozellikler)
-- Typescript 
+
+- Typescript
 - Service worker ile offline render destegi
 - Mobil uyumlulu guzel bir tasarim
 - Kullanilabilir UX

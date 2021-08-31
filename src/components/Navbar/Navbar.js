@@ -15,7 +15,7 @@ function Navbar() {
           role="navigation"
         >
           <Link to="/" className="pl-8">
-            Nav
+            LOGO
           </Link>
           <div className="px-4 cursor-pointer md:hidden">
             <svg

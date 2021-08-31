@@ -113,7 +113,7 @@ export default function Application() {
                   : 'focus:outline-none text-green-700 bg-green-100 py-1 px-2 rounded text-xs leading-3 mt-2'
               }
             >
-              Answer: {values?.data?.ticket?.approveAnswer}
+              Cevap: {values?.data?.ticket?.approveAnswer}
             </div>
           </div>
         </div>
