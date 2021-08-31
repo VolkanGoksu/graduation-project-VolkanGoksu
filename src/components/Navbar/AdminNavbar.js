@@ -22,7 +22,7 @@ function AdminNavbar() {
             Nav
           </Link>
           <div className="px-4 cursor-pointer md:hidden">
-            <svg
+            <svg data-testid='svg'
               className="w-6 h-6"
               fill="none"
               stroke="currentColor"

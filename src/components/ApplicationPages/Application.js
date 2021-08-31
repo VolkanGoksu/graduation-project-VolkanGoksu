@@ -19,21 +19,21 @@ export default function Application() {
   }, [])
 
   return (
-    <div class="flex items-center justify-center py-8 px-4">
-      <div class="md:w-96 rounded-md shadow-lg py-4 px-5 w-full bg-white dark:bg-gray-800">
+    <div className="flex items-center justify-center py-8 px-4">
+      <div className="md:w-96 rounded-md shadow-lg py-4 px-5 w-full bg-white dark:bg-gray-800">
         <h2 data-testid='applicationTitle'
           tabindex="0"
-          class="focus:outline-none text-xs leading-3 text-gray-600 dark:text-gray-100"
+          className="focus:outline-none text-xs leading-3 text-gray-600 dark:text-gray-100"
         >
           Sorgu Bilgisi
         </h2>
-        <div class="pt-6 relative">
-          <div class="flex items-center justify-between">
-            <div class="flex items-center">
-              <div class="w-2 h-2 rounded-full bg-purple-400"></div>
+        <div className="pt-6 relative">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center">
+              <div className="w-2 h-2 rounded-full bg-purple-400"></div>
               <span
                 tabindex="0"
-                class="focus:outline-none text-purple-400 text-xs italic font-normal pl-1"
+                className="focus:outline-none text-purple-400 text-xs italic font-normal pl-1"
               >
                 {values?.data?.ticket?.firstname}
                 {values?.data?.ticket?.lastName}
@@ -43,7 +43,7 @@ export default function Application() {
           </div>
           <p
             tabindex="0"
-            class="focus:outline-none text-gray-600 dark:text-gray-100 text-sm leading-none pt-2 "
+            className="focus:outline-none text-gray-600 dark:text-gray-100 text-sm leading-none pt-2 "
           >
             <label className="focus:outline-none text-xs italic pt-1 leading-3 text-gray-400 ">
               Email: {values?.data?.ticket?.email}
@@ -53,7 +53,7 @@ export default function Application() {
         
           <p
             tabindex="0"
-            class="focus:outline-none text-gray-600 dark:text-gray-100 text-sm leading-none pt-2 "
+            className="focus:outline-none text-gray-600 dark:text-gray-100 text-sm leading-none pt-2 "
           >
             <label className="focus:outline-none text-xs italic pt-1 leading-3 text-gray-400 ">
               TC No: {values?.data?.ticket?.idNo}
@@ -61,7 +61,7 @@ export default function Application() {
           </p>
           <p
             tabindex="0"
-            class="focus:outline-none text-gray-600 dark:text-gray-100 text-sm leading-none pt-2 "
+            className="focus:outline-none text-gray-600 dark:text-gray-100 text-sm leading-none pt-2 "
           >
             <label className="focus:outline-none text-xs italic pt-1 leading-3 text-gray-400 ">
               Yaş: {values?.data?.ticket?.age}
@@ -69,7 +69,7 @@ export default function Application() {
           </p>
           <p
             tabindex="0"
-            class="focus:outline-none text-gray-600 dark:text-gray-100 text-sm leading-none pt-2 "
+            className="focus:outline-none text-gray-600 dark:text-gray-100 text-sm leading-none pt-2 "
           >
             <label className="focus:outline-none text-xs italic pt-1 leading-3 text-gray-400 ">
               Açıklama: {values?.data?.ticket?.description}
@@ -77,16 +77,16 @@ export default function Application() {
           </p>
           <p
             tabindex="0"
-            class="focus:outline-none text-gray-600 dark:text-gray-100 text-sm leading-none pt-2 "
+            className="focus:outline-none text-gray-600 dark:text-gray-100 text-sm leading-none pt-2 "
           >
             <label className=" text-purple-400  focus:outline-none text-xs italic pt-1 leading-3 text-gray-400 ">
               Adres: {values?.data?.ticket?.address}
             </label>
           </p>
-          <div class="flex items-center justify-left">
+          <div className="flex items-center justify-left">
             <div
               tabindex="0"
-              class="focus:outline-none text-green-700 bg-green-100 py-1 px-2 rounded text-xs leading-3 mt-2"
+              className="focus:outline-none text-green-700 bg-green-100 py-1 px-2 rounded text-xs leading-3 mt-2"
             >
                Belge Numaranız: {values?.id}
             </div>
@@ -94,7 +94,7 @@ export default function Application() {
           <div className="flex items-center justify-right">
             <div
               tabindex="0"
-              class={
+              className={
                 values?.data?.ticket?.statu === 'unapproved'
                   ? 'focus:outline-none text-red-700 bg-red-100 py-1 px-2 rounded text-xs leading-3 mt-2'
                   : 'focus:outline-none text-green-700 bg-green-100 py-1 px-2 rounded text-xs leading-3 mt-2'
@@ -107,7 +107,7 @@ export default function Application() {
           <div className="flex items-center justify-right">
             <div
               tabindex="0"
-              class={
+              className={
                 values?.data?.ticket?.statu === 'unapproved'
                   ? 'focus:outline-none text-red-700 bg-red-100 py-1 px-2 rounded text-xs leading-3 mt-2'
                   : 'focus:outline-none text-green-700 bg-green-100 py-1 px-2 rounded text-xs leading-3 mt-2'
