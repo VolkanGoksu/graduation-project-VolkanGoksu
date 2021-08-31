@@ -22,7 +22,7 @@ function AdminNavbar() {
             Nav
           </Link>
           <div className="px-4 cursor-pointer md:hidden">
-            <svg
+            <svg 
               className="w-6 h-6"
               fill="none"
               stroke="currentColor"
@@ -38,11 +38,10 @@ function AdminNavbar() {
             </svg>
           </div>
           <div className="pr-8 md:block hidden">
-        
             <Link to="/admin/basvuru-listesi" className="px-4">
               Başvuru Listesi
             </Link>
-            <Link
+            <Link 
               onClick={() => {
                 handleLogout()
               }}

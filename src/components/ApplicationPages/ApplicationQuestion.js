@@ -36,30 +36,30 @@ export default function ApplicationQuestion() {
     <div className="card m-3">
       <h5 className="text-gray-600 font-medium text-center"></h5>
       <div className="card-body">
-        <form
+        <form data-testid='alertbutton'
           className="w-full max-w-lg m-auto py-10 mt-10 px-10 border"
           onSubmit={handleSubmit(onSubmit)}
         >
           <div className="form-row">
             <div className="form-group col-5">
-              <label className="text-gray-600 font-medium">
+              <label data-testid='applicationQuestion' className="text-gray-600 font-medium">
                 Başvuru Sorgula
               </label>
-              <input
+              <input 
                 name="FormQuestion"
                 type="text"
                 {...register('FormQuestion')}
                 className={`border-solid border-gray-300 border py-2 px-4 w-full
         rounded text-gray-700 ${errors.FormQuestion ? 'is-invalid' : ''}`}
               />
-              <div className="mb-3 text-normal text-red-500 invalid-feedback">
+              <div data-testid='errorDiv' className="mb-3 text-normal text-red-500 invalid-feedback">
                 {errors.FormQuestion?.message}
               </div>
             </div>
           </div>
 
           <div className="form-group">
-            <button
+            <button data-testid='applicationQuestionButton'
               type="submit"
               className=" mt-4 bg-green-400 hover:bg-green-600 text-green-100 border py-3 px-6 font-semibold text-md rounded"
             >

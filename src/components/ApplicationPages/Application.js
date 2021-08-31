@@ -21,7 +21,7 @@ export default function Application() {
   return (
     <div class="flex items-center justify-center py-8 px-4">
       <div class="md:w-96 rounded-md shadow-lg py-4 px-5 w-full bg-white dark:bg-gray-800">
-        <h2
+        <h2 data-testid='applicationTitle'
           tabindex="0"
           class="focus:outline-none text-xs leading-3 text-gray-600 dark:text-gray-100"
         >

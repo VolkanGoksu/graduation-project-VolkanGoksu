@@ -36,14 +36,14 @@ export default function AdminApproveList() {
         <div>
           <ul class="menu p-3 bg-base-200 rounded-xl">
             <li>
-              <span class="block px-5 py-1 text-xs text-gray-400 font-bold">
+              <span data-testid ='spanHeader' class="block px-5 py-1 text-xs text-gray-400 font-bold">
                 Başvuru Listesi
               </span>
             </li>
             <li>
               <a class="block px-5 py-3 rounded-lg text-gray-900 hover:bg-gray-200 focus:bg-indigo-500 focus:text-white outline-none cursor-pointer">
                 <div className="float-right ">
-                  <GoSearch
+                  <GoSearch data-testid='alertbutton'
                     onClick={() => history.push('/admin/basvuru/' + x.id)}
                   />
                 </div>

@@ -45,7 +45,7 @@ export default function AdminApproveRecord() {
 
   return (
     <div className="card m-3">
-      <h5 className="text-gray-600 font-medium text-center">
+      <h5 data-testid = 'recordheader' className="text-gray-600 font-medium text-center">
         Admin Onay Panel
       </h5>
       <div className="card-body">
@@ -63,8 +63,8 @@ export default function AdminApproveRecord() {
               onChange={(e) => setAnswer(e.target.value)}
             />
           </div>
-          <div className="form-group">
-            <button
+          <div  className="form-group">
+            <button data-testid = 'handleAsnwer'
               className="mt-4 bg-green-400 hover:bg-green-600 text-green-100 border py-3 px-6 font-semibold text-md rounded"
               onClick={() => handleAnswer()}
             >
